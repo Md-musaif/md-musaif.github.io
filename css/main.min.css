@@ -5229,6 +5229,8 @@ form textarea:required:valid {
     fill: currentColor
 }
 
+
+
 @media only screen and (min-width:768px) {
     .mxd-logo__image {
         height: 4rem
