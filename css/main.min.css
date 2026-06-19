@@ -5145,7 +5145,7 @@ form textarea:required:valid {
 }
 
 .mxd-header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 3rem;
     display: -webkit-box;
@@ -5438,7 +5438,7 @@ form textarea:required:valid {
     height: 100svh;
     pointer-events: none;
     overflow: hidden;
-    z-index: 11
+    z-index: 100
 }
 
 .mxd-menu__backdrop {
@@ -5460,7 +5460,7 @@ form textarea:required:valid {
     top: 3rem;
     right: 3rem;
     pointer-events: all;
-    z-index: 12;
+    z-index: 101;
     mix-blend-mode: difference
 }
 
@@ -5557,6 +5557,72 @@ form textarea:required:valid {
     transform-origin: center;
     will-change: transform
 }
+
+/* mod */
+/* Mobile adjustments (adjust 767px if your design uses a different breakpoint) */
+@media only screen and (max-width: 767px) {
+    /* 1. Stack the menu elements vertically instead of horizontally */
+    .mxd-menu__content {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        
+        /* Use vertical flex alignment */
+        -webkit-box-pack: start;
+        -moz-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-box-align: stretch;
+        -moz-box-align: stretch;
+        -ms-flex-align: center;
+        align-items: stretch;
+        
+        /* Enable vertical scroll if content is taller than the screen */
+        overflow-y: auto !important; 
+        -webkit-overflow-scrolling: touch;
+        
+        padding: 3rem 2rem; /* Add safe space inside the mobile screen */
+        box-sizing: border-box;
+    }
+
+    /* 2. Hide the video media column to save screen space */
+    .mxd-menu__media {
+        display: none !important;
+    }
+
+    /* 3. Force the navigation wrapper to fill the available width */
+    .mxd-menu__navigation {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 4. Stack links and contact info vertically inside the navigation */
+    .mxd-menu__inner {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        gap: 3rem; /* Add spacing between link list and contact info */
+    }
+
+    .mxd-menu__left, 
+    .mxd-menu__right {
+        width: 100% !important;
+    }
+}
+
+
+
+
 
 .mxd-menu__content,
 .mxd-menu__overlay {
